@@ -5,9 +5,9 @@ class Solution:
         max_sum = window_sum
 
         # Slide the window
-        for r in range(k, len(nums)):
-            window_sum += nums[r]       # add new element
-            window_sum -= nums[r - k]   # remove old element
+        for i in range(k, len(nums)):
+            window_sum += nums[i]       # add new element
+            window_sum -= nums[i - k]   # remove old element
 
             max_sum = max(max_sum, window_sum)
 
