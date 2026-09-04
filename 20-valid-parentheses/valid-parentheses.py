@@ -1,21 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        # Dictionary to store matching pairs
-        bracket_map = {')': '(', '}': '{', ']': '['}
         stack = []
-        
-        for char in s:
-            # If it's a closing bracket
-            if char in bracket_map:
-                # Pop the top element if stack exists, else use a dummy value
-                top_element = stack.pop() if stack else '#'
-                
-                # Check if the brackets match
-                if bracket_map[char] != top_element:
-                    return False
+
+        bracket_map={")":"(","}":"{","]":"["}
+
+        for character in s:
+            if character in bracket_map:
+                if stack and stack[-1] == bracket_map[character]:
+                    stack.pop()
+                else:
+                    return False 
             else:
-                # It's an opening bracket, push to stack
-                stack.append(char)
-        
-        # Stack should be empty if all brackets are closed properly
+                stack.append(character)
         return not stack
